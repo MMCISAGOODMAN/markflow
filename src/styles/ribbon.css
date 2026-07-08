@@ -1,0 +1,129 @@
+.ribbon {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  padding: 6px 12px 8px;
+  background: var(--color-ribbon-bg);
+  border-bottom: 1px solid var(--color-border-light);
+  flex-shrink: 0;
+  overflow-x: auto;
+  min-height: 78px;
+  box-shadow: var(--color-shadow-sm);
+}
+
+.ribbon__group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4px 10px;
+  position: relative;
+}
+
+.ribbon__group:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 10px;
+  bottom: 10px;
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    var(--color-border) 20%,
+    var(--color-border) 80%,
+    transparent
+  );
+}
+
+.ribbon__group-label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text-subtle);
+  margin-top: 4px;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.ribbon__buttons {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  flex-wrap: nowrap;
+}
+
+.ribbon__btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  min-width: 42px;
+  height: 46px;
+  padding: 5px 8px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--color-text);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 10px;
+  font-weight: 500;
+  transition: background 0.12s, border-color 0.12s, transform 0.1s, box-shadow 0.12s;
+}
+
+.ribbon__btn:hover {
+  background: var(--color-ribbon-hover);
+  border-color: var(--color-border-light);
+  box-shadow: var(--color-shadow-sm);
+}
+
+.ribbon__btn:active,
+.ribbon__btn.active {
+  background: var(--color-ribbon-active);
+  border-color: var(--color-accent);
+  transform: scale(0.97);
+}
+
+.ribbon__btn svg {
+  flex-shrink: 0;
+  opacity: 0.85;
+  transition: opacity 0.12s;
+}
+
+.ribbon__btn:hover svg {
+  opacity: 1;
+  color: var(--color-accent);
+}
+
+.ribbon__btn-label {
+  line-height: 1;
+  white-space: nowrap;
+  color: var(--color-text-muted);
+}
+
+.ribbon__btn--wide {
+  min-width: 58px;
+}
+
+.ribbon__btn--file {
+  min-width: 54px;
+}
+
+@media (max-width: 768px) {
+  .ribbon {
+    min-height: 64px;
+    padding: 4px 8px;
+  }
+
+  .ribbon__btn {
+    min-width: 38px;
+    height: 42px;
+    font-size: 9px;
+  }
+
+  .ribbon__btn-label {
+    display: none;
+  }
+}
